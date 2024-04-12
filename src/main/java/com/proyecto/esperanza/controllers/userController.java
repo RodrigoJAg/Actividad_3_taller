@@ -9,10 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 @RequestMapping("/")
 public class userController {
-
     @Autowired
     private usuarioServicio servicioUsuario;
 
@@ -29,6 +29,37 @@ public class userController {
     @ModelAttribute("transaccion")
     public transaccionesDTO newTrans() {
         return new transaccionesDTO();
+
     }
+
+
+    public boolean prueba(String username){
+        usuariosDTO user = new usuariosDTO("rodriaac", "123");
+        boolean test = false;
+
+
+        if(servicioUsuario.getUsers().isEmpty()){
+            servicioUsuario.saveUser(user);
+            if(user.getUsername().equals(username)){
+                test = true;
+            }
+        }else{
+            for(int i = 0; i < servicioUsuario.getUsers().size(); i++){
+                if(!servicioUsuario.getUsers().get(i).getUsername().equals(user.getUsername())){
+                    servicioUsuario.saveUser(user);
+                }
+
+                if(servicioUsuario.getUsers().get(i).getUsername().equals(username)){
+                    test = true;
+                }
+
+            }
+        }
+
+
+
+        return test;
+    }
+
 
 }
