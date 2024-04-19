@@ -12,6 +12,7 @@
 - Maven 3.9.6 o posteriores
 # Instalación
 - mvnw package en cmd en el path del proyecto
+- Instalado de momento en un ambiente local, luego cloud.
 # Configuración
 - Asegurarse de tener instalado java, mysql, maven y tener las variables de entorno listas
 - https://mkyong.com/maven/how-to-install-maven-in-windows/
